@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Sales </title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="
+https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js
+"></script>
+     <style>
+           h1 {
+            display: flex;
+            justify-content: center;
+            color: blue;
+          animation: slide-in 2s;
+        }
+        @keyframes slide-in {
+          0% {
+            transform: translateX(-100%);
+          }
+          50% {
+            transform: translateX(10);
+          }
+          75% {
+            transform: translateX(20);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+      h3{
+        color: rgb(105, 172, 5);
+        font-size: 24px;
+      }
+        canvas{
+            max-width: 800px;
+            max-height: 400px; 
+            display: flex;
+        }
+        .chartbar{
+         width: 50%;
+         height: 60%;
+         text-align: center;
+         border-radius: 8px;
+         box-shadow: 7px 8px 9px 9px rgb(234, 235, 236);
+         margin: 0 auto; /* add this line */
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-direction: column;
+        }
+       
+     </style>
+</head>
+<body>
+    <header>
+      <h1>Monthly Sales data</h1>
+    </header>
+    <div class="chartbar">
+    <h3>Monthly Sales</h3>
+    <canvas id="myChart"></canvas>
+</div>
+    <script>
+     const MonthlyData = [0.5,1,2,3,4,6,7,8,9,10,11,12];
+     const Months = ['January','February','March','April','May','June','July','August','September','october','November','December'];
+     //create chart 
+     const ctx = document.getElementById('myChart').getContext('2d');
+     const myChart = new Chart(ctx,{
+        type:'bar',
+        data:{
+            labels:Months,
+            datasets:[{
+                label:'Months Sales',
+                data:MonthlyData,
+                backgroundColor:[
+                    'rgba(255,99,132, 0.2)',
+                    'rgba(54,162,235, 0.3)',
+                    'rgba(255,206,86, 0.2)',
+                    'rgba(75,192,192, 0.2)',
+                    'rgba(153,102,255, 0.2)',
+                    'rgba(255,159,64, 0.2)',
+                    'rgba(256,139,63, 0.2)',
+                    'rgba(285,109,62, 0.2)',
+                    'rgba(295,189,44, 0.2)',
+                    'rgba(235,179,84, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54,162,235,1)',
+                    'rgba(254,206,86,1)',
+                    'rgba(75,192,192,1)',
+                    'rgba(153,102,255,1)',
+                    'rgba(255,159,64,1)'
+                ],
+                borderWidth:2
+            }]
+        },
+        options: {
+      scales: {
+        x: {
+          ticks: {
+            font: {
+              size: 20,
+              weight: 'bold',
+            },
+            color: '#4caf99', // Change the color of the X-axis labels
+          },
+          grid: {
+            color: 'rgba(225,45,243,2)', // Change the color of the X-axis line
+            borderColor: '#6gd66', // Change the color of the X-axis border
+          }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            font: {
+              size: 22,
+              weight: 'bold',
+            },
+            color: '#2196f3', // Change the color of the Y-axis labels
+          },
+          grid: {
+            color: '#2196f3', // Change the color of the Y-axis line
+            borderColor: '#2196f3', // Change the color of the Y-axis border
+          }
+        }
+      }
+    }
+  });
+    
+    </script>
+</body>
+</html>
